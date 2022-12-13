@@ -39,7 +39,6 @@ function loadEngineers(mode) {
 // for loading the client names for the editing page
 function loadClients() {
 	var xhttp, tabs, i;
-	console.log('run')
 	tabs = document.getElementsByClassName('editClientDropdown');
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
@@ -119,7 +118,29 @@ try {
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('generalSearchEngineerSelect').innerHTML = this.responseText;
+		}
+	}
+	xhttp.open('GET','../Functions/loadEngineers.php',true);
+	xhttp.send();
+} catch (err) {}
+
+try {
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById('clientSelect').innerHTML = this.responseText;
+		}
+	}
+	xhttp.open('GET','../Functions/loadClients.php',true);
+	xhttp.send();
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('clientSelectGeneralSearch').innerHTML = this.responseText;
 		}
 	}
 	xhttp.open('GET','../Functions/loadClients.php',true);
@@ -1298,3 +1319,7 @@ function sendPDF2() {
 	myWindow.document.write('</body></html>')
 	myWindow.document.close();
 }
+
+
+// 							this is for the searching area
+

@@ -248,7 +248,7 @@
 #clientText:hover, #clientAddressText:hover {
     border: 3px solid black;
     margin: 4px;
-}
+}   
 
 #addClientButton {
     margin: 5px;
@@ -279,11 +279,15 @@
     width: auto;
 }
 
+#searchFrame {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #generalSearchForm {
-    display: inline-block;
+    flex: 25% 0;
 }
 
 #dropdownSearchGeneral {
-    display: inline-block;
-    position: absolute;
+    flex: 0 10%;
 }
