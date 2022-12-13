@@ -258,3 +258,32 @@
 #addClientButton:hover {
     text-decoration: underline;
 }
+
+
+/*                              this is for the search area                                          */
+
+.searchFormList > li {
+    padding: 5px;
+    margin: 10px;
+}
+
+.searchFormList > li > label {
+    text-decoration: underline;
+}
+
+#generalSearchEngineerSelect {
+    width: auto;
+}
+
+#clientSelectGeneralSearch {
+    width: auto;
+}
+
+#generalSearchForm {
+    display: inline-block;
+}
+
+#dropdownSearchGeneral {
+    display: inline-block;
+    position: absolute;
+}

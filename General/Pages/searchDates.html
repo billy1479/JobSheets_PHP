@@ -2,15 +2,12 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Job Sheets</title>
-
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -23,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 
-<body id="page-top" onload="loadEngineerTable()">
+<body id="page-top" onload="equipmentAssign()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -61,7 +58,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="addJob.html">Make a job sheet</a>
-                        <a class="collapse-item" href="../../index.html">View job sheets</a>
+                        <a class="collapse-item" href="">View job sheets</a>
                     </div>
                 </div>
             </li>
@@ -133,10 +130,10 @@
 
                     <!-- Topbar Search -->
                     <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" id="searchFormSub">
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" id="searchFormMain">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                                aria-label="Search" aria-describedby="basic-addon2" id="formSearchBox">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -180,83 +177,10 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Engineers</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Search Dates</h1>
                     </div>
 
                     <hr class="sidebar-divider">
-
-                    <div class="adminContainer">
-                        <!-- current engineers are loaded here -->
-                        
-                        <div class="navFrame">
-                            <a onclick="openModal('addEngineerModal')" class="navButton" id="addEngineer">Add Engineer</a>
-                            <a onclick="openModal('editEngineerModal')" class="navButton" id="editEngineer">Edit Engineer</a>
-                            <a onclick="openModal('deleteEngineerModal')" class="navButton" id="deleteEngineer">Delete Engineers</a>
-                        </div>
-                        <div id="engineerContainer"></div>
-                        <hr class="sidebar-divider">
-                        <div class="mymodal" id="addEngineerModal">
-                            <!-- modal for the adding engineer section -->
-                            <h3 class="modalHeader">Adding Engineer</h3>
-                            <form id="addEngineerForm" class="generalForm">
-                                <div id="addEngineerFormFrame"></div>
-                                <ul style="list-style: none;" id="editEngineerList">
-                                <li>
-                                    <input type="text" name="engineerName" id="addengineerText" placeholder="Enter name here ...">
-                                </li>
-                                <li>
-                                    <button type="submit" class="submitButton" id="addEngineerButton"><i class="bi bi-plus-circle-fill"></i></button>
-                                </li>
-                                <li>
-                                    <label id="addEngineerStatus"></label>
-                                </li>
-                                </ul>
-                            </form>
-                        </div>
-                        <div class="mymodal" id="editEngineerModal">
-                            <!-- modal for editing the engineer name -->
-                            <h3 class="modalHeader">Editing Engineer Names</h3>
-                            <form class="generalForm" id="editEngineerNameForm">
-                                <ul style="list-style: none;" id="editEngineerList">
-                                    <div id="editEngineerNameFormFrame"></div>
-                                    <li>
-                                        <select class="" id="engineerSelect">
-                                            <option value="">Please select an engineer ...</option>
-                                        </select>
-                                    </li>
-                                    <li>
-                                        <input type="text" name="engineerName" id="engineerEditText">
-                                    </li>
-                                    <li>
-                                        <button type="submit" class="submitButton" id="editEngineerButton"><i class="bi bi-pencil-fill"></i></button>
-                                    </li>
-                                    <li>
-                                        <label id="editEngineerStatus"></label>
-                                    </li>
-                                </ul>
-                            </form>
-                        </div>
-                        <div class="mymodal" id="deleteEngineerModal">
-                            <!-- deleting engineer modal -->
-                            <h3 class="modalHeader">Deleting Engineer</h3>
-                            <form class="generalForm" id="deleteEngineerForm">
-                                <ul style="list-style: none;" id="editEngineerList">
-                                    <div id="deleteEngineerFormFrame"></div>
-                                <li>
-                                    <select id="engineerSelect2">
-                                        <option value="">Please select an engineer ...</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <button type="submit" id="deleteEngineerButton" class="submitButton"><i class="bi bi-trash-fill"></i></button>
-                                </li>
-                                <li>
-                                    <label id="deleteEngineerStatus"></label>
-                                </li>
-                                </ul>
-                            </form>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -321,11 +245,10 @@
     <script src="../js/demo/chart-area-demo.js"></script>
     <script src="../js/demo/chart-pie-demo.js"></script>
     <script src="../js/mainscript.js"></script>
-    <script>
-        document.onload(openModal('addEngineerModal'));
-        loadEngineers(1)
-        loadEngineers(2)
-    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <!-- for the pdf software -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 </body>
 
 </html>
