@@ -199,14 +199,6 @@
                                         <input type="date" id="date2" name="date2">
                                     </li>
                                     <li>
-                                        <label>Select an engineer:</label>
-                                    </li>
-                                    <li>
-                                        <select class="engineerSelect" id="generalSearchEngineerSelect" name="engineerSearch">
-                                            <!-- this will need JS to populate -->
-                                        </select>
-                                    </li>
-                                    <li>
                                         <label>Select a client:</label>
                                     </li>
                                     <li>
@@ -224,7 +216,6 @@
                             <!-- dropdown goes here -->
                             <!-- no submit button needed - will be submit event built into click -->
                             <select id="generalSearchDropdown">
-                                <option>Test</option>
                             </select>
                         </form>
                     </div>
@@ -239,6 +230,8 @@
                     </div>
 
                     <hr class="sidebar-divider">
+
+                    <div id="searchContainer"></div>
 
                     <form action="" id="generalSearchJobSheetForm" style="text-align: center;">
                     <div class="jobSheetContainer" id="jobSheets">

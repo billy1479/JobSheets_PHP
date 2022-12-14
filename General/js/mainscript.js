@@ -118,18 +118,6 @@ try {
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById('generalSearchEngineerSelect').innerHTML = this.responseText;
-		}
-	}
-	xhttp.open('GET','../Functions/loadEngineers.php',true);
-	xhttp.send();
-} catch (err) {}
-
-try {
-	var xhttp;
-	xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById('clientSelect').innerHTML = this.responseText;
 		}
 	}
@@ -1323,3 +1311,19 @@ function sendPDF2() {
 
 // 							this is for the searching area
 
+// This is for adding an event listener 
+
+try {
+	document.getElementById('generalSearchForm').addEventListener('submit', function (e) {
+		e.preventDefault();
+		var date1, date2, clientName
+		date1 = document.getElementById('date1').value;
+		date2 = document.getElementById('date2').value;
+		clientName = document.getElementById('clientSelectGeneralSearch').value;
+		x = {date1: date1, date2: date2, cname: clientName};
+		JSONsearch = JSON.stringify(x);
+
+		$('#searchContainer').load('../Functions/masterSearch.php', {x: JSONsearch}, function (data, status) {
+		})
+	})
+} catch (err) {console.log(err)}
