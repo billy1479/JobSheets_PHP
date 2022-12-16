@@ -90,9 +90,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="searchDates.html">Search Dates</a>
-                        <a class="collapse-item" href="searchEngineers.html">Search Engineers</a>
                         <a class="collapse-item" href="searchClients.html">Search Clients</a>
-                        <a class="collapse-item" href="searchGeneral.html">General</a>
                     </div>  
                 </div>
             </li>
@@ -182,9 +180,25 @@
 
                     <hr class="sidebar-divider">
 
-                    <form id="searchClientsForm" style="text-align: center;">
-                    
-                    </form>
+                    <div class="searchFrame">
+                        <form id="clientSearchForm" style="text-align: left;">
+                            <div class="SearchContainer" id="clientSearchContainer">
+                                <ul style="list-style: none;" class="searchFormList">
+                                    <li>
+                                        <select class="editClientDropdown" id="clientSearchSelect">
+
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                        <form id="dropdownSearchGeneral" style="text-align: right;">
+                            <p>Search results are returned here:</p>
+                            <select id="generalSearchDropdown">
+
+                            </select>
+                        </form>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

@@ -90,9 +90,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="searchDates.html">Search Dates</a>
-                        <a class="collapse-item" href="searchEngineers.html">Search Engineers</a>
                         <a class="collapse-item" href="searchClients.html">Search Clients</a>
-                        <a class="collapse-item" href="searchGeneral.html">General</a>
                     </div>  
                 </div>
             </li>
@@ -181,6 +179,250 @@
                     </div>
 
                     <hr class="sidebar-divider">
+
+                    <div class="searchFrame">
+                        <form id="generalSearchForm" style="text-align:left">
+                            <div class="SearchContainer" id="generalSearchContainer">
+                                <ul style="list-style: none;" class="searchFormList">
+                                    <li>
+                                        <label>Date 1:</label>
+                                    </li>
+                                    <li>
+                                        <input type="date" id="date1" name="date1">
+                                    </li>
+                                    <li>
+                                        <label>Date 2:</label>
+                                    </li>
+                                    <li>
+                                        <input type="date" id="date2" name="date2">
+                                    </li>
+                                    <!-- <li>
+                                        <label>Select a client:</label>
+                                    </li>
+                                    <li>
+                                        <select id="clientSelectGeneralSearch" class="editClientDropdown" name="client">
+                                        </select>
+                                    </li> -->
+                                    <li>
+                                        <input type="submit" id="jobSubmitButton">
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                        <form id="dropdownSearchGeneral" style="text-align: right;">
+                            <!-- dropdown goes here -->
+                            <!-- no submit button needed - will be submit event built into click -->
+                            <p>Search results are returned here:</p>
+                            <select id="generalSearchDropdown">
+                            </select>
+                        </form>
+                    </div>
+
+                    
+                    
+
+                    <hr class="sidebar-divider">
+
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Search Results:</h1>
+                    </div>
+
+                    <hr class="sidebar-divider">
+
+                    <div id="searchContainer"></div>
+
+                    <form action="" id="generalSearchJobSheetForm" style="text-align: center;">
+                    <div class="jobSheetContainer" id="jobSheets">
+                        <!-- this is where the job sheets are loaded -->
+                        <div class="date">
+                            <h3 class="formTitle">Date</h3>
+                            <hr class="sidebar-divider">
+                            <input type="date" id="jobDate">
+                        </div>
+                        <div class="client">
+                            <h3 class="formTitle">Client</h3>
+                            <hr class="sidebar-divider">
+                            <select id="clientSelect" name="client">
+                                <option value="">Please select a client ... </option>
+                            </select>
+                        </div>
+                        <div class="location">
+                            <h3 class="formTitle">Location</h3>
+                            <hr class="sidebar-divider">
+                            <label id="locationLabel">N/A</label>
+                        </div>
+                        <div class="ponumber">
+                            <h3 class="formTitle">PO Number</h3>
+                            <hr class="sidebar-divider">
+                            <input type="text" name="ponumber" id="ponumberInput">
+                        </div>
+                        <div class="days">
+                            <h3 class="formTitle">Days</h3>
+                            <hr class="sidebar-divider">
+                            <input class="timeEntry" type="text" id="daysEntry" name="days">
+                        </div>
+                        <div class="hours">
+                            <h3 class="formTitle">Hours</h3>
+                            <hr class="sidebar-divider">
+                            <input class="timeEntry" type="text" id="hoursEntry" name="hours">
+                        </div>
+                        <div class="ID">
+                            <h3 class="formTitle">Job ID</h3>
+                            <hr class="sidebar-divider">
+                            <label id="jobIDLabel">N/A</label>
+                        </div>
+                        <div class="engineer">
+                            <h3 class="formTitle">Engineer</h3>
+                            <hr class="sidebar-divider">
+                            <select class="engineerSelect" id="engineerSelect1" name="engineer1">
+                                <option value="">Please select an engineer ...</option>
+                            </select>
+                            <select class="engineerSelect" id="engineerSelect2" name="engineer2">
+                                <option value="">Please select an engineer ...</option>
+                            </select>
+                            <select class="engineerSelect" id="engineerSelect3" name="engineer3">
+                                <option value="">Please select an engineer ...</option>
+                            </select>
+                            <select class="engineerSelect" id="engineerSelect4" name="engineer4">
+                                <option value="">Please select an engineer ...</option>
+                            </select>
+                        </div>
+                        <div class="details">
+                            <h3 class="formTitle">Job Details</h3>
+                            <hr class="sidebar-divider">
+                            <textarea name="jobDetails" id="detailsArea"></textarea>
+                        </div>
+                        <div class="expenses">
+                            <h3 class="formTitle">Expenses</h3>
+                            <hr class="sidebar-divider">
+                            <ul style="list-style: none;" id="expensesList">
+                                <li>
+                                    <label class="expensesLabel">Mileage:</label>
+                                    <input type="number" name="mileage" class="textField" id="mileageEntry" value="0">
+                                    <label id="milageLabel" class="expensesLabel">£0</label>
+                                </li>
+                                <hr class="sidebar-divider">
+                                <li>
+                                    <label class="expensesLabel">Food:</label>
+                                    <input type="number" name="food" class="textField" id="foodEntry" value="0">
+                                    <label id="foodLabel" class="expensesLabel">£0</label>
+                                </li>
+                                <hr class="sidebar-divider">
+                                <li>
+                                    <label class="expensesLabel">Postage:</label>
+                                    <input type="number" name="postage" class="textField" id="postageEntry" value="0">
+                                    <label id="postageLabel" class="expensesLabel">£0</label>
+                                </li>
+                                <hr class="sidebar-divider">
+                                <li>
+                                    <label class="expensesLabel">Parking:</label>
+                                    <input type="number" name="parking" class="textField" id="parkingEntry" value="0">
+                                    <label id="parkingLabel" class="expensesLabel">£0</label>
+                                </li>
+                                <hr class="sidebar-divider">
+                                <li>
+                                    <label class="expensesLabel">Tools:</label>
+                                    <input type="number" name="tools" class="textField" id="toolsEntry" value="0">
+                                    <label id="toolsLabel" class="expensesLabel">£0</label>
+                                </li>
+                                <hr class="sidebar-divider">
+                                <li>
+                                    <label id="totalLabel" class="expensesLabel"></label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="equipment">
+                            <h3 class="formTitle">Equipment</h3>
+                            <hr class="sidebar-divider">
+                            <ul style="list-style: none; width: 100%;" id="equipmentList">
+                                <li>
+                                    <label class="equipmentLabel" style="width: 600px;">Equipment</label>
+                                    <label class="equipmentLabel">Serial Number</label>
+                                    <label class="equipmentLabel">Cost Number</label>
+                                    <label class="equipmentLabel">Sale Number</label>
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput">
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput1" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput1" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput2" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput2" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput3" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput3" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput4" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput4" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput5" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput5" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput6" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput6" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput7" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput7" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput8" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput8" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput9" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput9" value="0">
+                                </li>
+                                <li>
+                                    <input type="text" name="expenses" class="equipmentInput" >
+                                    <input type="text" name="serialNumber" class="serialNumberInput" value="N/A">
+                                    <input type="number" name="costNumber" class="costNumberInput" id="costNumberInput10" value='0'>
+                                    <input type="number" name="saleNumber" class="saleNumberInput" id="saleNumberInput10" value="0">
+                                </li>
+                                
+                                <li>
+                                    <input id="totalCostLabel" name="totalCost" placeholder="Total Cost">
+                                    <input id="totalSaleLabel" name="totalSale" placeholder="Total Sale">
+                                </li>
+                                
+                                
+                            </ul>
+                        </div>
+                        <div class="jobComplete">
+                            <h3 class="formTitle">Job Complete</h3>
+                            <hr class="sidebar-divider">
+                            <label id="jobCompleteLabel">Job Complete:</label>
+                            <input type="checkbox" name="jobComplete" id="jobCompleteCheckbox" placeholder="Job Complete" required>
+                        </div>
+                        <div class="invoiceNumber">
+                            <h3 class="formTitle">Invoice Number</h3>
+                            <hr class="sidebar-divider">
+                            <input type="text" name="invoiceNumber" id="invoiceNumberInput" placeholder="Invoice Number">
+                        </div>
+                    </div>
+                    <button type="submit" id="jobExportButton" onclick="sendPDF2()"> Export </button>
                 </div>
                 <!-- /.container-fluid -->
 

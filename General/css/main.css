@@ -279,12 +279,12 @@
     width: auto;
 }
 
-#searchFrame {
+.searchFrame {
     display: flex;
     flex-wrap: wrap;
 }
 
-#generalSearchForm {
+#generalSearchForm, #clientSearchForm {
     flex: 40% 0;
 }
 

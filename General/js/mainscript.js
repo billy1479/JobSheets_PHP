@@ -1323,7 +1323,7 @@ try {
 		x = {date1: date1, date2: date2};
 		JSONsearch = JSON.stringify(x);
 
-		$('#generalSearchDropdown').load('../Functions/masterSearch.php', {x: JSONsearch}, function (data, status) {
+		$('#generalSearchDropdown').load('../Functions/searchDates.php', {x: JSONsearch}, function (data, status) {
 		})
 	})
 } catch (err) {console.log(err)}
@@ -1375,7 +1375,7 @@ try {
 				document.getElementById('ponumberInput').value = ponumber;
 				document.getElementById('daysEntry').value = days;
 				document.getElementById('hoursEntry').value = hours;
-				document.getElementById('jobIDLabel').innerHTML = document.getElementById('jobSelect').value;
+				document.getElementById('jobIDLabel').innerHTML = document.getElementById('generalSearchDropdown').value;
 	
 	
 				// engineers goes here - new dropdown will need to be made and add an extra line of code that follows the below pattern
