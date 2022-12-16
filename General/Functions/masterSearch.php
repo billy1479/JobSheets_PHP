@@ -5,16 +5,14 @@ $data = json_decode($x, true);
 
 $date1 = $data['date1'];
 $date2 = $data['date2'];
-$client = $data['cname'];
+// $client = $data['cname'];
 
 // This is an IF statement that sees which type of SQL search we should do based off the inputs
+// if ($client = null) {
+//     $client = 'Client';
+// } else {}
 
-if ($client = '') {
-    $client = 'Client';
-} else {}
-
-
-$data = $conn->query('SELECT ID FROM jobs WHERE CAST(Date as date) BETWEEN "'.$date1.'" AND "'.$date2.'" AND Client='.$client.'');
+$data = $conn->query('SELECT ID FROM jobs WHERE CAST(Date as date) BETWEEN "'.$date1.'" AND "'.$date2.'"');
 
 while ($data && $row=mysqli_fetch_array(($data))) {
     echo "<option value='".$row['ID']."'>".$row['ID']."</option>";

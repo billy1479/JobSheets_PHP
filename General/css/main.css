@@ -285,9 +285,13 @@
 }
 
 #generalSearchForm {
-    flex: 25% 0;
+    flex: 40% 0;
 }
 
 #dropdownSearchGeneral {
-    flex: 0 10%;
+    flex: 0 20%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
 }

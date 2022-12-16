@@ -198,14 +198,13 @@
                                     <li>
                                         <input type="date" id="date2" name="date2">
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <label>Select a client:</label>
                                     </li>
                                     <li>
                                         <select id="clientSelectGeneralSearch" class="editClientDropdown" name="client">
-                                            <!-- this will need JS to populate - copy client select JS being used  -->
                                         </select>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <input type="submit" id="jobSubmitButton">
                                     </li>
@@ -215,6 +214,7 @@
                         <form id="dropdownSearchGeneral" style="text-align: right;">
                             <!-- dropdown goes here -->
                             <!-- no submit button needed - will be submit event built into click -->
+                            <p>Search results are returned here:</p>
                             <select id="generalSearchDropdown">
                             </select>
                         </form>
@@ -271,7 +271,7 @@
                         <div class="ID">
                             <h3 class="formTitle">Job ID</h3>
                             <hr class="sidebar-divider">
-                            <label id="jobIDLabel">1</label>
+                            <label id="jobIDLabel">N/A</label>
                         </div>
                         <div class="engineer">
                             <h3 class="formTitle">Engineer</h3>
