@@ -1319,10 +1319,8 @@ try {
 		var date1, date2, clientName
 		date1 = document.getElementById('date1').value;
 		date2 = document.getElementById('date2').value;
-		// clientName = document.getElementById('clientSelectGeneralSearch').value;
-		x = {date1: date1, date2: date2};
-		JSONsearch = JSON.stringify(x);
-
+		temp = {date1: date1, date2: date2};
+		JSONsearch = JSON.stringify(temp);
 		$('#generalSearchDropdown').load('../Functions/searchDates.php', {x: JSONsearch}, function (data, status) {
 		})
 	})
@@ -1331,12 +1329,14 @@ try {
 try {
 	document.getElementById('clientSearchForm').addEventListener('submit', function (e) {
 		e.preventDefault();
-		var date1, date2, clientName
-		y = document.getElementById('clientSearchSelect').value;
-		x = {cname: y};
-		JSONsearch = JSON.stringify(x);
-
-		$('#generalSearchDropdown').load('../Functions/searchClients.php', {x: JSONsearch}, function (data, status) {
+		var clientName;
+		// y = document.getElementById('clientSearchSelect').value;
+		y = $('#clientSearchSelect').val();
+		console.log(y)
+		temp = {cname: y};
+		console.log(temp)
+		JSONsearch = JSON.stringify(temp);
+		$('#generalSearchDropdown2').load('../Functions/searchClients.php', {x: JSONsearch}, function (data, status) {
 		})
 	})
 } catch (err) {console.log(err)}
@@ -1458,10 +1458,9 @@ try {
 	}) } catch (err) {console.log(err)}
 
 	try {
-		document.getElementById('generalSearchDropdown').addEventListener('click' , function() {
-			document.getElementById('generalSearchDropdown').addEventListener('change', function () {
-				x = $('#generalSearchDropdown').val();
-				console.log(x)
+		document.getElementById('generalSearchDropdown2').addEventListener('click' , function() {
+			document.getElementById('generalSearchDropdown2').addEventListener('change', function () {
+				x = $('#generalSearchDropdown2').val();
 				$('#searchContainer').load('../Functions/searchJobSheet.php', {ID: x}, function (data, status) {
 					var date, client, ponumber, days, hours, engineers, details, expenses, equipment, invoicenumber;
 					date = myObject['Date'];
@@ -1504,7 +1503,7 @@ try {
 					document.getElementById('ponumberInput').value = ponumber;
 					document.getElementById('daysEntry').value = days;
 					document.getElementById('hoursEntry').value = hours;
-					document.getElementById('jobIDLabel').innerHTML = document.getElementById('generalSearchDropdown').value;
+					document.getElementById('jobIDLabel').innerHTML = document.getElementById('generalSearchDropdown2').value;
 		
 		
 					// engineers goes here - new dropdown will need to be made and add an extra line of code that follows the below pattern

@@ -13,7 +13,7 @@ $date2 = $data['date2'];
 // } else {}
 
 $data = $conn->query('SELECT ID FROM jobs WHERE CAST(Date as date) BETWEEN "'.$date1.'" AND "'.$date2.'"');
-
+echo "<option value=''>Please select an ID</option>";
 while ($data && $row=mysqli_fetch_array(($data))) {
     echo "<option value='".$row['ID']."'>".$row['ID']."</option>";
 }
