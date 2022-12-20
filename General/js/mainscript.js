@@ -629,7 +629,7 @@ function mainSearch() {
 
 			document.getElementById('invoiceNumberInput').value = invoicenumber;
 			
-			// loads location based on value of dropdown
+			// loads location based on value of dropdown				
 			x = $('#clientSelect').val();
 			$('#locationLabel').load('General/Functions/loadAddress.php', {clientName: x}, function (data, status) {
 			})
@@ -645,6 +645,7 @@ function subSearch() {
 		id = $('#formSearchBox').val();
 		$('#searchTempFrame').load('../Functions/searchJobSheet.php', {ID: id}, function (data, status) {
 			// pulls through all the variables from the JSON object
+			console.log('hello')
 			var date, client, ponumber, days, hours, engineers, details, expenses, equipment, invoicenumber;
 			date = myObject['Date'];
 			client = myObject['Client'];
@@ -758,6 +759,9 @@ function subSearch() {
 
 try {
 	mainSearch();
+} catch(err) {console.log(err)}
+
+try {
 	subSearch();
 } catch(err) {console.log(err)}
 
