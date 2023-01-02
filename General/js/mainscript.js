@@ -20,6 +20,8 @@ function openModal(name) {
 }
 
 // this is for loading the engineers for the editing engineers page - mode denotes what sub page the user is on
+// This has been added to engineerJS.js
+
 function loadEngineers(mode) {
 	var xhttp;
 	xhttp = new XMLHttpRequest();
@@ -37,6 +39,7 @@ function loadEngineers(mode) {
 }
 
 // for loading the client names for the editing page
+// this has been added to clientJS.js
 function loadClients() {
 	var xhttp, tabs, i;
 	tabs = document.getElementsByClassName('editClientDropdown');
@@ -53,6 +56,7 @@ function loadClients() {
 }
 
 // this function is for loading the engineer table to the top of the engineer editing page
+// been added to engineerJS.js
 function loadEngineerTable() {
 	var xhttp;
 	xhttp = new XMLHttpRequest();
@@ -67,6 +71,7 @@ function loadEngineerTable() {
 
 
 try {
+	// been added to indexJS.js as loadClientNames()
     // load function for client names on main page
     var xhttp;
 	xhttp = new XMLHttpRequest();
@@ -81,6 +86,7 @@ try {
 
 
 try {
+	// been added to indexJS.js as loadEngineerNames()
 	// for loading the engineer names on main page
     var xhttp;
 	xhttp = new XMLHttpRequest();
@@ -158,6 +164,7 @@ try {
 } catch (err) {}
 
 // for changing the location of the client when a new client is selected in the editting section
+// been added to clientJS.js as f1()
 try {
 	document.getElementById('clientEditSelect2').addEventListener('click', function () {
 		// this loads the address when a client is selected
@@ -170,7 +177,7 @@ try {
 } catch (err) {}
 
 // for loading the id dropdown on main page 
-
+// been added to indexJS.js as loadIDs()
 try {
 	var xhttp;
 	xhttp = new XMLHttpRequest();
@@ -184,6 +191,7 @@ try {
 } catch (err) {}
 
 // for changing the job with the drop down
+// this has been added to indexJS.js
 
 try {
 document.getElementById('jobSelect').addEventListener('click' , function() {
@@ -301,6 +309,7 @@ document.getElementById('jobSelect').addEventListener('click' , function() {
 }) } catch (err) {console.log(err)}
 
 // for calculating mileage charge based of user mileage PLEASE CHANGE VALUE OF X IF THE MILEAGE RATE INCREASES/DECREASES
+// all of these have been added to indexJS.js - will be needed for another as well
 
 try {
 	document.getElementById('mileageEntry').addEventListener('blur', function () {
@@ -316,6 +325,7 @@ try {
 } catch (err) {}
 
 // functions for the expenses section for when a user clicks out to enter in the expense
+// all of these have been added to indexJS.js - will be needed for another as well
 
 try {
 	document.getElementById('foodEntry').addEventListener('blur', function () {
@@ -359,6 +369,7 @@ try {
 
 
 // for loading the total charge in the total label for expenses
+// been added to indexJS.js as loadTotal() - will need to be added to other as well
 function loadTotal() {
 	var total;
 	mileage = parseInt($('#mileageEntry').val());
@@ -375,6 +386,7 @@ function loadTotal() {
 // for the equipment cost price and selling price
 // this updates the total input boxes at the bottom of the equipment list
 // IF MORE EQUIPMENT IS NEEDED TO BE ADDED (THERE ARE 10 AVAILABLE BY DEFUALT) THEN PLEASE ADD THIS MANUALLY - MIGHT IMPLEMENT A NEW FEATURE
+// this has been added to indexJS.js - will be needed to be added to another as well
 function equipmentAssign() {
 	var i, inputs, inputs2;
 	var temp, x, areas, total;
@@ -416,6 +428,7 @@ try {
 
 // this is for adding the event listeners to the engineering forms
 
+// all of these have been added to engineerJS.js as engineerForms()
 
 try {
 	document.getElementById('addEngineerForm').addEventListener('submit', function (e) {
@@ -460,6 +473,7 @@ try {
 // ----------- the edit client section ----------------
 
 // this is for adding the event listeners to the client admin section
+// these have been added to clientJS.js as clientForms()
 try {
 	document.getElementById('addClientForm').addEventListener('submit', function (e) {
 		e.preventDefault();
@@ -515,6 +529,7 @@ try {
 
 
 // For the search function for both the main page and sub pages - NOT DONE
+// this has been added to indexJS.js
 function mainSearch() {
 	document.getElementById('searchFormMain').addEventListener('submit', function (e) {
 		e.preventDefault();
@@ -879,6 +894,7 @@ try {
 
 
 // this is for when you make a change to a current job sheet
+// this has been added to indexJS.js
 function submitChange() {
 	document.getElementById('viewJobSheetForm').addEventListener('submit', function (e) {
 		e.preventDefault();
@@ -969,6 +985,7 @@ try {
 
 
 // this exports the page as a pdf to be sent as an email - this is when a job is submitted with a receipt so will update the sql table as well as open a new page for email
+// can be main script for all files
 function sendPDF() {
 	if (document.getElementById('jobCompleteCheckbox').checked == true) {
 	loadNewID();
@@ -1150,6 +1167,7 @@ function sendPDF() {
 }
 
 // this is if someone wants to export or print a job sheet without submitting it to the sql database
+// can be in main script for all files
 function sendPDF2() {
 	loadNewID();
 	var myWindow = window.open('', 'PRINT');
