@@ -781,6 +781,7 @@ try {
 } catch(err) {console.log(err)}
 
 // FOR THE SUBMISSION OF A JOB SHEET
+// been added to the addJobJS.js
 function loadNewID() {
 	// this loads the New ID for a job sheet when the add job sheet page is loaded
 	var xhttp;
@@ -794,7 +795,7 @@ function loadNewID() {
 	xhttp.send();
 }
 
-
+// been added to the addJobJS.js
 function jobSheetForm() {
 	// this is called when a job sheet is submitted
 	document.getElementById('addJobSheetForm').addEventListener('submit', function (e) {
@@ -1334,7 +1335,7 @@ function sendPDF2() {
 // 							this is for the searching area
 
 // This is for adding an event listener 
-
+// been added to searchDatesJS.js as form1()
 try {
 	document.getElementById('generalSearchForm').addEventListener('submit', function (e) {
 		e.preventDefault();
@@ -1348,6 +1349,7 @@ try {
 	})
 } catch (err) {console.log(err)}
 
+// been added to searchClientsJS.js as form1()
 try {
 	document.getElementById('clientSearchForm').addEventListener('submit', function (e) {
 		e.preventDefault();
@@ -1363,6 +1365,8 @@ try {
 	})
 } catch (err) {console.log(err)}
 
+
+// been added to searchDatesJS.js as formAssign()
 try {
 	document.getElementById('generalSearchDropdown').addEventListener('click' , function() {
 		document.getElementById('generalSearchDropdown').addEventListener('change', function () {
@@ -1425,7 +1429,7 @@ try {
 				document.getElementById('mileageEntry').value = newMileage;
 				document.getElementById('milageLabel').innerHTML = '£' + mileage
 				document.getElementById('foodEntry').value = food;
-				document.getElementById('postageEntry').value = postage;
+				document.getElementById('postageEntry').value = postage; 
 				document.getElementById('parkingEntry').value = parking;
 				document.getElementById('toolsEntry').value = tools;
 				loadTotal();
@@ -1479,6 +1483,7 @@ try {
 		})
 	}) } catch (err) {console.log(err)}
 
+	// been added to searchClientsJS.js as formAssign()
 	try {
 		document.getElementById('generalSearchDropdown2').addEventListener('click' , function() {
 			document.getElementById('generalSearchDropdown2').addEventListener('change', function () {
