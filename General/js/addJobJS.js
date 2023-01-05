@@ -103,3 +103,9 @@ function jobSheetForm() {
 		})
 	})
 }
+
+
+// Function calls
+
+loadNewID();
+jobSheetForm();

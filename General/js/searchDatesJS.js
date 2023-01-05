@@ -128,3 +128,8 @@ function formAssign() {
 		})
     })
 }
+
+// Function calls
+
+form1();
+formAssign();

@@ -457,3 +457,12 @@ function submitChange() {
 		})
 	})
 }
+
+// Function calls
+
+loadClientNames();
+loadEngineerNames();
+loadIDs();
+changeJob();
+mainSearch();
+submitChange();
