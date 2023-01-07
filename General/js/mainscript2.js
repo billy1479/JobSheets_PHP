@@ -1,3 +1,5 @@
+// This is for the index.html and addJob.html pages
+
 function loadClientNames() {
     var xhttp;
 	xhttp = new XMLHttpRequest();
@@ -117,7 +119,6 @@ function equipmentAssign() {
 			document.getElementById('totalSaleLabel').value = '£' + total;
 		})
 	}
-
 }
 
 loadClientNames();
