@@ -458,6 +458,17 @@ function submitChange() {
 	})
 }
 
+function assignLocationChange() {
+	document.getElementById('clientSelect').addEventListener('click', function () {
+		// this loads the address when a client is selected
+		document.getElementById('clientSelect').addEventListener('change', function () {
+			x = $('#clientSelect').val();
+			$('#locationLabel').load('General/Functions/loadAddress.php', {clientName: x}, function (data, status) {
+			})
+		})
+	})
+}
+
 // Function calls
 
 loadClientNames();
@@ -466,3 +477,4 @@ loadIDs();
 changeJob();
 mainSearch();
 submitChange();
+assignLocationChange();

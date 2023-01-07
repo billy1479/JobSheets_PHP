@@ -6,7 +6,7 @@ function loadClientNames() {
 			document.getElementById('clientSelect').innerHTML = this.responseText;
 		}
 	}
-	xhttp.open('GET','General/Functions/loadClients.php',true);
+	xhttp.open('GET','../Functions/loadClients.php',true);
 	xhttp.send();
 }
 
@@ -21,7 +21,7 @@ function loadEngineerNames() {
             document.getElementById('engineerSelect4').innerHTML = this.responseText;
 		}
 	}
-	xhttp.open('GET','General/Functions/loadEngineers.php',true);
+	xhttp.open('GET','../Functions/loadEngineers.php',true);
 	xhttp.send();
 }
 
@@ -122,3 +122,5 @@ function equipmentAssign() {
 
 loadClientNames();
 loadEngineerNames();
+formElements();
+equipmentAssign();

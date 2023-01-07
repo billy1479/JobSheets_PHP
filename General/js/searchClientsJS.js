@@ -14,6 +14,18 @@ function form1() {
 	})
 }
 
+function loadClientSearchNames() {
+    var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('clientSearchSelect').innerHTML = this.responseText;
+		}
+	}
+    xhttp.open('GET','../Functions/loadClients.php',true);
+	xhttp.send();
+}
+
 function formAssign() {
     document.getElementById('generalSearchDropdown2').addEventListener('click' , function() {
         document.getElementById('generalSearchDropdown2').addEventListener('change', function () {
@@ -134,4 +146,4 @@ function formAssign() {
 
 form1();
 formAssign();
-
+loadClientSearchNames();

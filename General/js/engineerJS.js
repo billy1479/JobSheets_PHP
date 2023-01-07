@@ -66,22 +66,10 @@ function openModal(name) {
         tabs[i].style.display = 'none';
     }
     document.getElementById(name).style.display = 'block';
-	// this is for calling the JS for loading the engineer names to the select boxes
-	// this function is called on the start of editClients.html and editEngineers.html
-	// the first sub-page on each is called to start
-	// if (name == 'editEngineerModal') {
-	// 	loadEngineers(1); 
-	// 	engineerForms();
-	// } else if (name == 'deleteEngineerModal') {
-	// 	loadEngineers(2);
-	// 	engineerForms();
-	// } else if (name == 'editClientModal') {
-	// 	loadClients()
-	// } else {}
 }
 
 // Function calls
-
+loadEngineers(1)
 loadEngineers();
 loadEngineerTable();
 engineerForms();
