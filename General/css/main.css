@@ -6,6 +6,10 @@
     margin-right: auto;
 }
 
+#imageContainer {
+    /* image for arlo here */
+}
+
 .jobSheetContainer {
     width: 100%;
     display: grid;

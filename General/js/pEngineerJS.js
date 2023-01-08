@@ -10,13 +10,12 @@ function loadEngineerNames() {
 	xhttp.send();
 }
 
-function form1() {
+function form1() {  
     document.getElementById('engineerSearchForm').addEventListener('submit', function (e) {
 		e.preventDefault();
-		var engineerName;
 		y = $('#engineerSearchSelect').val();
 		$('#generalSearchDropdown2').load('../Functions/searchPEngineers.php', {x: y}, function (data, status) {
-		})
+        })
 	})
 }
 
@@ -137,3 +136,4 @@ function formAssign() {
 }
 
 loadEngineerNames();
+form1();
