@@ -12,7 +12,7 @@ while ($data && $row=mysqli_fetch_array($data)) {
     array_push($subArray, $row['ID']);
     array_push($y, $subArray);
 }
-
+echo "<option value=''>".print_r($data)."</option>";
 echo "<option value=''>step 1 done</option>";
 // This is a proper botch way of doing this - should have just used JSON to store data in database - have to loop through the 'string' to find the name of the first engeineer
 // foreach ($y as $currentElement) {
@@ -66,7 +66,7 @@ echo "<option value=''>".print_r($array2)."</option>";
 foreach ($array2 as $w) {
     echo "<option value='".$w."'>".$w."</option>";
 }
-
+echo "<option value=''>step 3 done</option>";
 // echo "<option value=''>".print_r($y)."</option>";
 // echo "<option value=''>".$y[0][0]."</option>";
 // echo "<option value=''>".$y[1]."</option>";
