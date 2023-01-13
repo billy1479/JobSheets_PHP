@@ -12,8 +12,6 @@ while ($data && $row=mysqli_fetch_array($data)) {
     array_push($subArray, $row['ID']);
     array_push($y, $subArray);
 }
-echo "<option value=''>".print_r($data)."</option>";
-echo "<option value=''>step 1 done</option>";
 // This is a proper botch way of doing this - should have just used JSON to store data in database - have to loop through the 'string' to find the name of the first engeineer
 // foreach ($y as $currentElement) {
 //     $tally = 0;
@@ -31,9 +29,11 @@ echo "<option value=''>step 1 done</option>";
 //     }
 // }
 
+$nextArray = [];
+
 foreach ($y as $currentSubArray) {
     $engineerPart = $currentSubArray[0];
-
+    // echo "<option value=''>".$engineerPart."</option>"; 
     $tally = 0;
     $index = 0;
     $n = '';
@@ -48,25 +48,34 @@ foreach ($y as $currentSubArray) {
         }
         $index += 1;
     }
-    $y[0] = $n;
+    // echo "<option value=''>".$n."</option>";
+    // $y[0] = $n;
+
+    // echo "<option value=''>".$y[0]."</option>";
+    array_push($nextArray,[$n,$y[1]]);
 }
 
-echo "<option value=''>step 2 done</option>";
 
 $array2 = [];
 
-foreach ($y as $currentSubArray) {
-    if ($currentSubArray[0] == $x) {
-        array_push($array2,$currentSubArray[1]);
-    }
+// foreach ($y as $currentSubArray2) {
+//     // echo "<option value=''>".$currentSubArray2[0]."</option>";
+//     if ($currentSubArray2[0] == $x) {
+//         // echo "<option value=''>".$currentSubArray[0]."</option>";
+//         array_push($array2,$currentSubArray2[1]);
+//     }
+// }
+
+for ($i=0;$i<count($nextArray);$i++) {
+    // this gives name 
+    echo "<option value=''>".$nextArray[$i][0]."</option>";
+    // this gives ID
+    echo "<option value=''>".$nextArray[$i][1][1]."</option>";
 }
 
-echo "<option value=''>step 3 done</option>";
-echo "<option value=''>".print_r($array2)."</option>";
-foreach ($array2 as $w) {
-    echo "<option value='".$w."'>".$w."</option>";
-}
-echo "<option value=''>step 3 done</option>";
+// foreach ($array2 as $w) {
+//     echo "<option value='".$w."'>".$w."</option>";
+// }
 // echo "<option value=''>".print_r($y)."</option>";
 // echo "<option value=''>".$y[0][0]."</option>";
 // echo "<option value=''>".$y[1]."</option>";
