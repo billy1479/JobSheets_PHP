@@ -1000,6 +1000,11 @@ function sendPDF() {
 	days = $('#daysEntry').val();
 	hours = $('#hoursEntry').val();
 	details = $('#detailsArea').val();
+
+	// calculates the height of the input
+	let numberOfLineBreaks = (details.match(/\n/g) || []).length;
+	let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
+
 	locationz = document.getElementById('locationLabel').innerHTML;
 
 	engineers = [];
@@ -1125,7 +1130,7 @@ function sendPDF() {
 	myWindow.document.write('<br>')
 	myWindow.document.write('<ul>')
 	myWindow.document.write('<li>Details:' + '</li>')
-	myWindow.document.write('<li><textarea style="Height: min-content;">' + details + '</textarea></li>')
+	myWindow.document.write('<li><textarea style="height: ' + newHeight + 'px; border: none;">' + details + '</textarea></li>')
 	myWindow.document.write('</ul>')
 	myWindow.document.write('<br>')
 	myWindow.document.write('<ul>')
