@@ -1125,7 +1125,7 @@ function sendPDF() {
 	myWindow.document.write('<br>')
 	myWindow.document.write('<ul>')
 	myWindow.document.write('<li>Details:' + '</li>')
-	myWindow.document.write('<li>' + details + '</li>')
+	myWindow.document.write('<li><textarea style="Height: min-content;">' + details + '</textarea></li>')
 	myWindow.document.write('</ul>')
 	myWindow.document.write('<br>')
 	myWindow.document.write('<ul>')
