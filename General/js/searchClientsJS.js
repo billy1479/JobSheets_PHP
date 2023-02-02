@@ -92,6 +92,21 @@ function formAssign() {
                 document.getElementById('toolsEntry').value = tools;
                 loadTotal();
     
+                let equipmentEntryBoxes = document.getElementsByClassName('equipmentInput')
+				if (equipmentArray.length > equipmentEntryBoxes.length) {3
+					entryBoxLength = equipmentEntryBoxes.length
+					console.log(equipmentArray.length + 1 - (entryBoxLength))
+					for (i=0;i<equipmentArray.length - (entryBoxLength);i++) {
+						addEquipmentArea()
+					}
+				} else if (equipmentArray.length < equipmentEntryBoxes.length) {
+					entryBoxLength = equipmentEntryBoxes.length
+					for (i=0;i<(entryBoxLength) - (equipmentArray.length);i++) {
+						let equipmentFrame = document.getElementsByClassName('extraEquipmentBox')
+						equipmentFrame[equipmentFrame.length-1].remove();
+					}
+				}
+
                 // equipment go here
                 counter = 0;
                 document.querySelectorAll('.equipmentInput').forEach(function (x) {

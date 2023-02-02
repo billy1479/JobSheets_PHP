@@ -40,7 +40,7 @@ function loadIDs() {
 }
 
 function changeJob() {
-    document.getElementById('jobSelect').addEventListener('click' , function() {
+    // document.getElementById('jobSelect').addEventListener('click' , function() {
         document.getElementById('jobSelect').addEventListener('change', function () {
             x = $('#jobSelect').val();
             $('#searchTempFrame').load('General/Functions/searchJobSheet.php', {ID: x}, function (data, status) {
@@ -55,7 +55,6 @@ function changeJob() {
                 expenses = myObject['Expenses'];
                 equipment = myObject['Equipment'];
                 invoicenumber = myObject['InvoiceNumber'];
-                console.log(engineers);
                 // for getting the engineers
     
                 // This stores the Engineer index array
@@ -106,6 +105,23 @@ function changeJob() {
                 loadTotal();
     
                 // equipment go here
+				// gets equipment boxes in a variable to see how many exist currently
+				let equipmentEntryBoxes = document.getElementsByClassName('equipmentInput')
+				if (equipmentArray.length > equipmentEntryBoxes.length) {3
+					entryBoxLength = equipmentEntryBoxes.length
+					console.log(equipmentArray.length + 1 - (entryBoxLength))
+					for (i=0;i<equipmentArray.length - (entryBoxLength);i++) {
+						addEquipmentArea()
+						equipmentAssign()
+					}
+				} else if (equipmentArray.length < equipmentEntryBoxes.length) {
+					entryBoxLength = equipmentEntryBoxes.length
+					for (i=0;i<(entryBoxLength) - (equipmentArray.length);i++) {
+						let equipmentFrame = document.getElementsByClassName('extraEquipmentBox')
+						equipmentFrame[equipmentFrame.length-1].remove();
+					}
+				}
+
                 counter = 0;
                 document.querySelectorAll('.equipmentInput').forEach(function (x) {
                     x.value = equipmentArray[counter][0];
@@ -152,7 +168,7 @@ function changeJob() {
                 })
             })
         })
-    })
+    // })
 }
 
 

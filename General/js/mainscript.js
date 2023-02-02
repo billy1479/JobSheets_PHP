@@ -1,25 +1,16 @@
 // this exports the page as a pdf to be sent as an email - this is when a job is submitted with a receipt so will update the sql table as well as open a new page for email
 // can be main script for all files
 function addEquipmentArea() {
-	let node =  document.createElement('li');
-	// let expression = document.create('<input type="text" name="expenses" class"equipmentInput"><input type="text" name="serialNumber" class="serialNumberInput" value="N/A"><input type="number" name="costNumber" class="costNumberInput" value="0"><input type="number" name="saleNumber" class="saleNumberInput" value="0">'); 
 	let myFrame = document.getElementById('extraEquipmentFrame');
-	let node1 = document.createTextNode('<input type="text" name="expenses" class"equipmentInput">')
-	let node2 = document.createTextNode('<input type="text" name="serialNumber" class="serialNumberInput" value="N/A">')
-	let node3 = document.createTextNode('<input type="number" name="costNumber" class="costNumberInput" value="0">')
-	let node4 = document.createTextNode('<input type="number" name="saleNumber" class="saleNumberInput" value="0">')
-	node.appendChild(node1)
-	node.appendChild(node2)
-	node.appendChild(node3)
-	node.appendChild(node4)
-	myFrame.appendChild(node)
+	myFrame.insertAdjacentHTML('afterend', '<li class="extraEquipmentBox"><input type="text" name="expenses" class="equipmentInput"><input type="text" name="serialNumber" class="serialNumberInput" placeholder="N/A"><input type="number" name="costNumber" class="costNumberInput" value="0"><input type="number" name="saleNumber" class="saleNumberInput" value="0"></li>')
+	equipmentAssign()
 }
 
 
 function sendPDF() {
 	if (document.getElementById('jobCompleteCheckbox').checked == true) {
 	loadNewID();
-	var myWindow = window.open('', 'PRINT');
+	// var myWindow = window.open('', 'PRINT');
 	var id, date, client, ponumber, days, hours, engineers, details, expenses, equipment, jobcomplete, invoicenumber;
 	var engineerBoxes, expensesBoxes, equipmentBoxes, serialNumberBoxes, costBoxes, saleBoxes, expensesBoxes;
 	id = document.getElementById('jobIDLabel').innerHTML;
@@ -89,116 +80,130 @@ function sendPDF() {
 		equipment.push(tempArray);
 	}
 
-	totalCost = Number.parseFloat(totalCost).toFixed(2);
-	totalSale = Number.parseFloat(totalSale).toFixed(2);
-
-	jobcomplete = $('#jobCompleteCheckbox').value;
-
-	// invoice number
-	invoicenumber = $('#invoiceNumberInput').val();
-
-	let tempEngineers = []
-	let engineerCounter = 0;
-	engineers.forEach(function(x) {
-		if (x == '') {
-
-		} else {
-			tempEngineers.push(x)
-			engineerCounter += 1;
-		} 
-	})
-
-	// equipment - this counts how many of the equipment list was filled (goes off the basis that the names must be filled in for anything else to be filled in)
-	tempEquipment = []
-	equipmentCounter = 0;
-	equipment.forEach(function(x) {
-		if (x[0] == '') {
-
-		} else {
-			tempEquipment.push(x)
-			equipmentCounter += 1;
+	serialState = false;
+	for (i=0;i<equipment.length;i++) {
+		console.log('the loop is running')
+		if (equipment[i][0] !== '') {
+			if (equipment[i][1] == '') {
+				serialState = true
+			}
 		}
-	})
-
-	// Puts all data into one array object
-	var jobEntry;
-	jobEntry = [date, client, ponumber, days, hours, engineers, details, expenses, equipment, jobcomplete, invoicenumber];
-
-	// creates a JS object and creates a JSOn object for it
-	jobEntry =  {date: date, client: client, ponumber: ponumber, days: days, hours: hours, engineers: engineers, details: details, expenses: expenses, equipment: equipment, invoicenumber: invoicenumber}
-	JSONentry = JSON.stringify(jobEntry);
-
-	// converts data to english format
-	tempYear = date[0] + date[1] + date[2] + date[3];
-	tempMonth = date[5] + date[6];
-	tempDay = date[8] + date [9];
-	newDate = tempDay + '/' + tempMonth + '/' + tempYear
-
-
-	// functions for sorting layout of print out (amount of lines for equipment and engineers)
-
-	myWindow.document.write('<html><title>Job Sheet Print</title><body>')
-	myWindow.document.write("<h2 style='display: inline-block;'>Job Sheets</h2>")
-	myWindow.document.write("<h2 style='display: inline-block; float: right;'>Job Number - " + id + "</h2>")
-	myWindow.document.write('<h3 style="display: block; font-size: 2rem;">' + newDate + '</h3>');
-	myWindow.document.write('<h3 style="font-size: 2rem; display: block;">' + client + '</h3>')
-	myWindow.document.write('<ul>')
-	myWindow.document.write('<li>Location - ' + locationz + '</li>')
-	myWindow.document.write('<li>Engineers:' + '</li>')
-
-	for (i=0;i<engineerCounter;i++) {
-		myWindow.document.write('<li><strong>' + tempEngineers[i] + '</strong></li>')
-	}
-	myWindow.document.write('</ul>')
-	myWindow.document.write('<br>')
-	myWindow.document.write('<ul>')
-
-	myWindow.document.write('<li>Days - ' + days + '</li>')
-	myWindow.document.write('<li>Hours - ' + hours + '</li>')
-	myWindow.document.write('</ul>')
-	myWindow.document.write('<br>')
-	myWindow.document.write('<ul>')
-	myWindow.document.write('<li>Details:' + '</li>')
-	myWindow.document.write('<li><textarea style="height: ' + newHeight + 'px; border: none;">' + details + '</textarea></li>')
-	myWindow.document.write('</ul>')
-	myWindow.document.write('<br>')
-	myWindow.document.write('<ul>')
-	myWindow.document.write('</ul>')
-	myWindow.document.write('<br>')
-	myWindow.document.write('<ul>')
-	myWindow.document.write('<li>Equipment:</li>')
-
-	for (i=0;i<equipmentCounter;i++) {
-		myWindow.document.write('<li>Name: ' + equipment[i][0] + ' | Serial Number: ' + equipment[i][1] + ' | Cost Number: ' + equipment[i][2] + ' | Sale Number: ' + equipment[i][3] + '</li>')
 	}
 
-	myWindow.document.write('<li>Total Cost: ' + totalCost + '</li>')
-	myWindow.document.write('<li>Total Sale: ' + totalSale + '</li>')
+	if (serialState == true) {
+		alert('Please ensure all equipment has the serial number entered - if you dont know then please enter N/A')
+	} else {
+		totalCost = Number.parseFloat(totalCost).toFixed(2);
+		totalSale = Number.parseFloat(totalSale).toFixed(2);
 
-	myWindow.document.write('</ul>')
-	myWindow.document.write('<br>')
-	myWindow.document.write('<ul>')
-	myWindow.document.write('<li>Expenses:' + '</li>')
-	myWindow.document.write('<li>Mileage: ' + expenses[0] + ' ('+ mileage + ' miles)</li>')
-	myWindow.document.write('<li>Food: ' + expenses[1] + '</li>')
-	myWindow.document.write('<li>Postage: ' + expenses[2] + '</li>')
-	myWindow.document.write('<li>Parking: ' + expenses[3] + '</li>')
-	myWindow.document.write('<li>Tools: ' + expenses[4] + '</li>')
-	myWindow.document.write('<li>Total Expenses: ' + totalExpenses + '</li>')
-	myWindow.document.write('</ul>')
-	myWindow.document.write('<button onclick="window.print()">PRINT</button>')
-	myWindow.document.write('<form action="mailto:expenses@ardenit.net">')
-	myWindow.document.write('<button type="submit">Email</button>')
-	myWindow.document.write('</form>')
-	myWindow.document.write('</body></html>')
-	myWindow.document.close();
+		jobcomplete = $('#jobCompleteCheckbox').value;
 
-	$('#addJobSheetForm').load('../Functions/submitJobReceipts.php', {x: JSONentry}, function (data, status) {
-		
-	})
+		// invoice number
+		invoicenumber = $('#invoiceNumberInput').val();
+
+		let tempEngineers = []
+		let engineerCounter = 0;
+		engineers.forEach(function(x) {
+			if (x == '') {
+
+			} else {
+				tempEngineers.push(x)
+				engineerCounter += 1;
+			} 
+		})
+
+		// equipment - this counts how many of the equipment list was filled (goes off the basis that the names must be filled in for anything else to be filled in)
+		tempEquipment = []
+		equipmentCounter = 0;
+		equipment.forEach(function(x) {
+			if (x[0] == '') {
+
+			} else {
+				tempEquipment.push(x)
+				equipmentCounter += 1;
+			}
+		})
+
+		// Puts all data into one array object
+		var jobEntry;
+		jobEntry = [date, client, ponumber, days, hours, engineers, details, expenses, equipment, jobcomplete, invoicenumber];
+
+		// creates a JS object and creates a JSOn object for it
+		jobEntry =  {date: date, client: client, ponumber: ponumber, days: days, hours: hours, engineers: engineers, details: details, expenses: expenses, equipment: equipment, invoicenumber: invoicenumber}
+		JSONentry = JSON.stringify(jobEntry);
+
+		// converts data to english format
+		tempYear = date[0] + date[1] + date[2] + date[3];
+		tempMonth = date[5] + date[6];
+		tempDay = date[8] + date [9];
+		newDate = tempDay + '/' + tempMonth + '/' + tempYear
+
+
+		// functions for sorting layout of print out (amount of lines for equipment and engineers)
+		var myWindow = window.open('', 'PRINT');
+		myWindow.document.write('<html><title>Job Sheet Print</title><body>')
+		myWindow.document.write("<h2 style='display: inline-block;'>Job Sheets</h2>")
+		myWindow.document.write("<h2 style='display: inline-block; float: right;'>Job Number - " + id + "</h2>")
+		myWindow.document.write('<h3 style="display: block; font-size: 2rem;">' + newDate + '</h3>');
+		myWindow.document.write('<h3 style="font-size: 2rem; display: block;">' + client + '</h3>')
+		myWindow.document.write('<ul>')
+		myWindow.document.write('<li>Location - ' + locationz + '</li>')
+		myWindow.document.write('<li>Engineers:' + '</li>')
+
+		for (i=0;i<engineerCounter;i++) {
+			myWindow.document.write('<li><strong>' + tempEngineers[i] + '</strong></li>')
+		}
+		myWindow.document.write('</ul>')
+		myWindow.document.write('<br>')
+		myWindow.document.write('<ul>')
+
+		myWindow.document.write('<li>Days - ' + days + '</li>')
+		myWindow.document.write('<li>Hours - ' + hours + '</li>')
+		myWindow.document.write('</ul>')
+		myWindow.document.write('<br>')
+		myWindow.document.write('<ul style="list-style: none">')
+		myWindow.document.write('<li>Details:' + '</li>')
+		myWindow.document.write('<li><textarea style="height: ' + newHeight + 'px; border: none;">' + details + '</textarea></li>')
+		myWindow.document.write('</ul>')
+		myWindow.document.write('<br>')
+		myWindow.document.write('<ul>')
+		myWindow.document.write('</ul>')
+		myWindow.document.write('<br>')
+		myWindow.document.write('<ul>')
+		myWindow.document.write('<li>Equipment:</li>')
+
+		for (i=0;i<equipmentCounter;i++) {
+			myWindow.document.write('<li>Name: ' + equipment[i][0] + ' | Serial Number: ' + equipment[i][1] + ' | Cost Number: ' + equipment[i][2] + ' | Sale Number: ' + equipment[i][3] + '</li>')
+		}
+
+		myWindow.document.write('<li>Total Cost: ' + totalCost + '</li>')
+		myWindow.document.write('<li>Total Sale: ' + totalSale + '</li>')
+
+		myWindow.document.write('</ul>')
+		myWindow.document.write('<br>')
+		myWindow.document.write('<ul>')
+		myWindow.document.write('<li>Expenses:' + '</li>')
+		myWindow.document.write('<li>Mileage: ' + expenses[0] + ' ('+ mileage + ' miles)</li>')
+		myWindow.document.write('<li>Food: ' + expenses[1] + '</li>')
+		myWindow.document.write('<li>Postage: ' + expenses[2] + '</li>')
+		myWindow.document.write('<li>Parking: ' + expenses[3] + '</li>')
+		myWindow.document.write('<li>Tools: ' + expenses[4] + '</li>')
+		myWindow.document.write('<li>Total Expenses: ' + totalExpenses + '</li>')
+		myWindow.document.write('</ul>')
+		myWindow.document.write('<button onclick="window.print()">PRINT</button>')
+		myWindow.document.write('<form action="mailto:expenses@ardenit.net">')
+		myWindow.document.write('<button type="submit">Email</button>')
+		myWindow.document.write('</form>')
+		myWindow.document.write('</body></html>')
+		myWindow.document.close();
+
+		$('#addJobSheetForm').load('../Functions/submitJobReceipts.php', {x: JSONentry}, function (data, status) {
+			
+		})}
 	} else {
 		alert('Please ensure the Job Complete Box is ticked ... ')
 	}
+
 }
 
 // this is if someone wants to export or print a job sheet without submitting it to the sql database
@@ -215,6 +220,9 @@ function sendPDF2() {
 	hours = $('#hoursEntry').val();
 	details = $('#detailsArea').val();
 	locationz = document.getElementById('locationLabel').innerHTML;
+
+	let numberOfLineBreaks = (details.match(/\n/g) || []).length;
+	let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
 
 	engineers = [];
 	document.querySelectorAll('.engineerSelect').forEach(function (x) {
@@ -329,9 +337,9 @@ function sendPDF2() {
 	myWindow.document.write('<li>Hours - ' + hours + '</li>')
 	myWindow.document.write('</ul>')
 	myWindow.document.write('<br>')
-	myWindow.document.write('<ul>')
+	myWindow.document.write('<ul style="list-style: none">')
 	myWindow.document.write('<li>Details:' + '</li>')
-	myWindow.document.write('<li><textarea>' + details + '</textarea></li>')
+	myWindow.document.write('<li><textarea style="height: ' + newHeight + 'px; border: none;">' + details + '</textarea></li>')
 	myWindow.document.write('</ul>')
 	myWindow.document.write('<br>')
 	myWindow.document.write('<ul>')

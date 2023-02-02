@@ -84,23 +84,38 @@ function jobSheetForm() {
 			equipment.push(tempArray);
 		}
 
-		// job complete
-		jobcomplete = $('#jobCompleteCheckbox').value;
+		serialState = false;
+		console.log('hello')
+		for (i=0;i<equipment.length;i++) {
+			console.log('the loop is running')
+			if (equipment[i][0] !== '') {
+				if (equipment[i][1] == '') {
+					serialState = true
+				}
+			}
+		}
 
-		// invoice number
-		invoicenumber = $('#invoiceNumberInput').val();
+		if (serialState == true) {
+			alert('Please make sure all equipment has its associated serial number - if you do not know it then please write N/A')
+		} else {
+			// job complete
+			// jobcomplete = $('#jobCompleteCheckbox').value;
 
-		// Puts all data into one array object
-		var jobEntry;
-		jobEntry = [date, client, ponumber, days, hours, engineers, details, expenses, equipment, jobcomplete, invoicenumber];
+			// invoice number
+			// invoicenumber = $('#invoiceNumberInput').val();
 
-		// creates a JS object and creates a JSOn object for it
-		jobEntry =  {date: date, client: client, ponumber: ponumber, days: days, hours: hours, engineers: engineers, details: details, expenses: expenses, equipment: equipment, invoicenumber: invoicenumber}
-		JSONentry = JSON.stringify(jobEntry);
+			// Puts all data into one array object
+			// var jobEntry;
+			// jobEntry = [date, client, ponumber, days, hours, engineers, details, expenses, equipment, jobcomplete, invoicenumber];
 
-		$('#addJobSheetForm').load('../Functions/submitJob.php', {x: JSONentry, id: jobID, location: location}, function (data, status) {
-			document.location.reload();
-		})
+			// creates a JS object and creates a JSOn object for it
+			// jobEntry =  {date: date, client: client, ponumber: ponumber, days: days, hours: hours, engineers: engineers, details: details, expenses: expenses, equipment: equipment, invoicenumber: invoicenumber}
+			// JSONentry = JSON.stringify(jobEntry);
+
+			// $('#addJobSheetForm').load('../Functions/submitJob.php', {x: JSONentry, id: jobID, location: location}, function (data, status) {
+			// 	document.location.reload();
+			// })
+		}
 	})
 }
 
