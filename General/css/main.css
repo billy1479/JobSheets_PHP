@@ -147,6 +147,10 @@
     color: black;
 }
 
+#addExpenseButton:hover {
+    cursor: pointer;
+}
+
 #equipmentList > li, #editEngineerList > li {
     margin: 10px;
 }

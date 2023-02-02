@@ -1,5 +1,21 @@
 // this exports the page as a pdf to be sent as an email - this is when a job is submitted with a receipt so will update the sql table as well as open a new page for email
 // can be main script for all files
+function addEquipmentArea() {
+	let node =  document.createElement('li');
+	// let expression = document.create('<input type="text" name="expenses" class"equipmentInput"><input type="text" name="serialNumber" class="serialNumberInput" value="N/A"><input type="number" name="costNumber" class="costNumberInput" value="0"><input type="number" name="saleNumber" class="saleNumberInput" value="0">'); 
+	let myFrame = document.getElementById('extraEquipmentFrame');
+	let node1 = document.createTextNode('<input type="text" name="expenses" class"equipmentInput">')
+	let node2 = document.createTextNode('<input type="text" name="serialNumber" class="serialNumberInput" value="N/A">')
+	let node3 = document.createTextNode('<input type="number" name="costNumber" class="costNumberInput" value="0">')
+	let node4 = document.createTextNode('<input type="number" name="saleNumber" class="saleNumberInput" value="0">')
+	node.appendChild(node1)
+	node.appendChild(node2)
+	node.appendChild(node3)
+	node.appendChild(node4)
+	myFrame.appendChild(node)
+}
+
+
 function sendPDF() {
 	if (document.getElementById('jobCompleteCheckbox').checked == true) {
 	loadNewID();
