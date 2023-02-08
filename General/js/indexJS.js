@@ -581,12 +581,18 @@ function equipmentAssign() {
 
 // Function calls
 
-loadClientNames();
-loadEngineerNames();
-loadIDs();
-changeJob();
-mainSearch();
-submitChange();
-assignLocationChange();
-equipmentAssign();
-formElements();
+function callerFunction() {
+	loadClientNames();
+	loadEngineerNames();
+	loadIDs();
+	changeJob();
+	mainSearch();
+	submitChange();
+	assignLocationChange();
+	equipmentAssign();
+	formElements();
+}
+
+document.addEventListener('DOMContentLoaded', callerFunction);
+
+
