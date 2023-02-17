@@ -42,6 +42,7 @@ for ($i=0;$i<count($nextArray);$i++) {
         array_push($array2, $nextArray[$i][1]);
     }
 }
+asort($array2);
 echo "<option value=''>Please select an ID</option>";
 foreach ($array2 as $w) {
     echo "<option value='".$w."'>".$w."</option>";

@@ -469,7 +469,8 @@ function submitChange() {
 		JSONentry = JSON.stringify(jobEntry);
 
 		$('#searchTempFrame').load('General/Functions/editJob.php', {x: JSONentry, id: id}, function (data, status) {
-			// document.location.reload();
+			alert('Job Sheet ' + id + ' has been updated.')
+			document.location.reload();
 		})
 	})
 }
