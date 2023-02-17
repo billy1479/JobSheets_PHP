@@ -82,7 +82,6 @@ function sendPDF() {
 
 	serialState = false;
 	for (i=0;i<equipment.length;i++) {
-		console.log('the loop is running')
 		if (equipment[i][0] !== '') {
 			if (equipment[i][1] == '') {
 				serialState = true
@@ -183,7 +182,7 @@ function sendPDF() {
 		myWindow.document.write('<br>')
 		myWindow.document.write('<ul>')
 		myWindow.document.write('<li>Expenses:' + '</li>')
-		myWindow.document.write('<li>Mileage: ' + expenses[0] + ' ('+ mileage + ' miles)</li>')
+		myWindow.document.write('<li>Mileage: ' + expenses[0] + ' ('+ actualMileage + ' miles)</li>')
 		myWindow.document.write('<li>Food: ' + expenses[1] + '</li>')
 		myWindow.document.write('<li>Postage: ' + expenses[2] + '</li>')
 		myWindow.document.write('<li>Parking: ' + expenses[3] + '</li>')
