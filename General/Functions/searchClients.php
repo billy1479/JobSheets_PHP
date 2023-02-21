@@ -4,7 +4,7 @@ $x = $_POST['x'];
 $result = json_decode($x, true);
 
 $clientName = $result['cname'];
-$sqlStatement = 'SELECT ID from jobs where Client="'.$clientName.'"';
+$sqlStatement = 'SELECT ID from jobs where Client="'.$clientName.'" ORDER BY ID DESC';
 
 $data = $conn->query($sqlStatement);
 echo "<option value=''>Please select an ID</option>";

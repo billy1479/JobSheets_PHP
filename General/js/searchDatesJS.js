@@ -146,5 +146,10 @@ function formAssign() {
 
 // Function calls
 
-form1();
-formAssign();
+
+function callerFunction() {
+	form1();
+	formAssign();
+}
+
+document.addEventListener('DOMContentLoaded', callerFunction);

@@ -193,11 +193,12 @@ function sendPDF() {
 		myWindow.document.write('<form action="mailto:expenses@ardenit.net">')
 		myWindow.document.write('<button type="submit">Email</button>')
 		myWindow.document.write('</form>')
+		myWindow.document.write('<button onclick="window.close()">CLOSE</button>')
 		myWindow.document.write('</body></html>')
 		myWindow.document.close();
 
 		$('#addJobSheetForm').load('../Functions/submitJobReceipts.php', {x: JSONentry}, function (data, status) {
-			
+			document.location.reload();
 		})}
 	} else {
 		alert('Please ensure the Job Complete Box is ticked ... ')
@@ -367,6 +368,7 @@ function sendPDF2() {
 	myWindow.document.write('</ul>')
 	myWindow.document.write('<button id="printButton" onclick="window.print()">PRINT</button>')
 	myWindow.document.write('<button onclick="mailto:expenses@Ardenit.net">Email</button>')
+	myWindow.document.write('<button onclick="window.close()">CLOSE</button>')
 	myWindow.document.write('</body></html>')
 	myWindow.document.close();
 }

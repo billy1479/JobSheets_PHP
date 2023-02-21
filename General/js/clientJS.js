@@ -15,6 +15,18 @@ function loadClients() {
 	xhttp.send();
 }
 
+function loadClientTable() {
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('ClientContainer').innerHTML = this.responseText;
+		}
+	}
+	xhttp.open('GET','../Functions/loadClientsTable.php',true);
+	xhttp.send();
+}
+
 function clientForms() {
     document.getElementById('addClientForm').addEventListener('submit', function (e) {
 		e.preventDefault();
@@ -75,22 +87,17 @@ function openModal(name) {
         tabs[i].style.display = 'none';
     }
     document.getElementById(name).style.display = 'block';
-	// this is for calling the JS for loading the engineer names to the select boxes
-	// this function is called on the start of editClients.html and editEngineers.html
-	// the first sub-page on each is called to start
-	// if (name == 'editEngineerModal') {
-	// 	loadEngineers(1); 
-	// 	engineerForms();
-	// } else if (name == 'deleteEngineerModal') {
-	// 	loadEngineers(2);
-	// 	engineerForms();
-	// } else if (name == 'editClientModal') {
-	// 	loadClients()
-	// } else {}
 }
 
 // Function calls
 
-f1();
-clientForms();
-loadClients();
+function callerFunction() {
+	f1();
+	clientForms();
+	loadClientTable();
+	loadClients();
+}
+
+document.addEventListener('DOMContentLoaded', callerFunction);
+
+

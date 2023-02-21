@@ -130,8 +130,10 @@ function assignLocationChange() {
 }
 // Function calls
 
-loadNewID();
-jobSheetForm();
-assignLocationChange();
-// formElements();
-// equipmentAssign()
+function callerFunction() {
+	loadNewID()
+	jobSheetForm()
+	assignLocationChange()
+}
+
+document.addEventListener('DOMContentLoaded', callerFunction);

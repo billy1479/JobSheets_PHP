@@ -150,6 +150,10 @@ function formAssign() {
     })
 }
 
-loadEngineerNames();
-form1();
-formAssign();
+function callerFunction() {
+    loadEngineerNames();
+    form1();
+    formAssign();
+}
+
+document.addEventListener('DOMContentLoaded', callerFunction);

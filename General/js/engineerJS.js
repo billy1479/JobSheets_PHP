@@ -69,7 +69,12 @@ function openModal(name) {
 }
 
 // Function calls
-loadEngineers(1)
-loadEngineers();
-loadEngineerTable();
-engineerForms();
+
+function callerFunction() {
+	loadEngineers(1)
+	loadEngineers();
+	loadEngineerTable();
+	engineerForms();
+}
+
+document.addEventListener('DOMContentLoaded', callerFunction);

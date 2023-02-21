@@ -158,7 +158,11 @@ function formAssign() {
 }
 
 // Function calls
+function callerFunction() {
+    form1();
+    formAssign();
+    loadClientSearchNames();
+}
 
-form1();
-formAssign();
-loadClientSearchNames();
+
+document.addEventListener('DOMContentLoaded', callerFunction);
