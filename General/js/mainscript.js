@@ -339,7 +339,7 @@ function sendPDF2() {
 	myWindow.document.write('<br>')
 	myWindow.document.write('<ul style="list-style: none">')
 	myWindow.document.write('<li>Details:' + '</li>')
-	myWindow.document.write('<li><textarea style="height: ' + newHeight + 'px; border: none;">' + details + '</textarea></li>')
+	myWindow.document.write('<li><textarea style="height: ' + newHeight + 'px; border: none; width: 800px;">' + details + '</textarea></li>')
 	myWindow.document.write('</ul>')
 	myWindow.document.write('<br>')
 	myWindow.document.write('<ul>')
