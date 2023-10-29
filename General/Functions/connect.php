@@ -1,13 +1,11 @@
 <?php
-// details will need to be changed for the arden local server
-$username = 'root';
+// Details will need to be updated for local server
+$username = '';
 $password = '';
-$servername = 'localhost';
+$servername = '';
 $dbname = 'jobs2';
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed");
-} else {
-    // nothing
 }
 ?>

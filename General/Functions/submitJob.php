@@ -57,6 +57,8 @@ require 'PHPMailer/OAuth.php';
 
 date_default_timezone_set('Etc/UTC');
 
+// THESE DETAILS WILL NEED TO BE FILLED OUT WITH MAIL ACCOUNT DETAILS
+
 $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->SMTPDebug = 4;
@@ -67,10 +69,10 @@ $mail->SMTPOptions = array(
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
-$mail->Username = 'jobsheets@ardenit.net';
-$mail->Password = 'Majorlaser50!';
-$mail->setFrom('jobsheets@ardenit.net', 'Job Sheets');
-$mail->addAddress('bstapleton1911.bs@gmail.com','ToEmail');
+$mail->Username = '';
+$mail->Password = '';
+$mail->setFrom('', 'Job Sheets');
+$mail->addAddress('','ToEmail');
 $mail->isHTML(true);
 
 // this is for the engineer list
